@@ -1,0 +1,31 @@
+﻿<Window x:Class="VoteApp.Windows.AddWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:VoteApp.Windows"
+        mc:Ignorable="d"
+        Title="{Binding TitleText}" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Height="200" Width="400">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <TextBlock Grid.ColumnSpan="4" FontSize="20"  Text="{Binding TitleText}" Margin="{StaticResource MarginTextBlock}"/>
+
+        <TextBlock Grid.Row="1" Grid.ColumnSpan="2" Margin="{StaticResource MarginTextBlock}" VerticalAlignment="Center">Name</TextBlock>
+        <TextBox Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3" Text="{Binding Name}" Margin="{StaticResource MarginTextBox}" VerticalContentAlignment="Center"/>
+
+        <TextBlock Grid.Row="2" Grid.ColumnSpan="2" Margin="{StaticResource MarginTextBlock}" VerticalAlignment="Center">Surname</TextBlock>
+        <TextBox Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="3" Text="{Binding Surname}" Margin="{StaticResource MarginTextBox}" VerticalContentAlignment="Center"/>
+        <Button Grid.Row="3" Grid.Column="2" Grid.ColumnSpan="2" Margin="{StaticResource MarginButton}" HorizontalAlignment="Right" Command="{Binding SubmitCommand}">Submit</Button>
+    </Grid>
+</Window>

@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.7.34031.279
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VoteApp", "VoteApp\VoteApp.csproj", "{979F478C-F5D4-447C-9F27-F2A1FD533C4E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VoteApp.Interfaces", "VoteApp.Interfaces\VoteApp.Interfaces.csproj", "{A54BBF67-3C2C-4DD1-B8CF-41D79252F778}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{979F478C-F5D4-447C-9F27-F2A1FD533C4E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{979F478C-F5D4-447C-9F27-F2A1FD533C4E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{979F478C-F5D4-447C-9F27-F2A1FD533C4E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{979F478C-F5D4-447C-9F27-F2A1FD533C4E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A54BBF67-3C2C-4DD1-B8CF-41D79252F778}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A54BBF67-3C2C-4DD1-B8CF-41D79252F778}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A54BBF67-3C2C-4DD1-B8CF-41D79252F778}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A54BBF67-3C2C-4DD1-B8CF-41D79252F778}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {4F586E5E-052E-491F-B74D-D3532410CE3B}
+	EndGlobalSection
+EndGlobal
