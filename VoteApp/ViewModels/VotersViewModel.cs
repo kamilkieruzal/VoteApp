@@ -6,7 +6,6 @@ using VoteApp.DatabaseContext;
 using VoteApp.Events;
 using VoteApp.Interfaces.Interfaces;
 using VoteApp.Models;
-using VoteApp.Services;
 using VoteApp.Windows;
 
 namespace VoteApp.ViewModels
