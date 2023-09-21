@@ -59,13 +59,13 @@ namespace VoteApp.Tests.Services
             eventAggregatorMock.Verify(x => x.GetEvent<VotedEvent>(), Times.Once);
         }
 
-        private IList<Voter> GetSampleVotersData() => new List<Voter>
+        private static IList<Voter> GetSampleVotersData() => new List<Voter>
             {
                 new Voter { Id = 1, FullName = "Jan Kowalski", HasVoted = false },
                 new Voter { Id = 2, FullName = "Adam Nowak", HasVoted = true}
             };
 
-        private IList<Candidate> GetSampleCandidatesData() => new List<Candidate>
+        private static IList<Candidate> GetSampleCandidatesData() => new List<Candidate>
             {
                 new Candidate { Id = 1, FullName = "Kazimierz Wielki", Votes = 1 },
                 new Candidate { Id = 2, FullName = "Bolesław Chrobry", Votes = 0 }
