@@ -5,7 +5,9 @@ VisualStudioVersion = 17.7.34031.279
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VoteApp", "VoteApp\VoteApp.csproj", "{979F478C-F5D4-447C-9F27-F2A1FD533C4E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VoteApp.Interfaces", "VoteApp.Interfaces\VoteApp.Interfaces.csproj", "{A54BBF67-3C2C-4DD1-B8CF-41D79252F778}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VoteApp.Interfaces", "VoteApp.Interfaces\VoteApp.Interfaces.csproj", "{A54BBF67-3C2C-4DD1-B8CF-41D79252F778}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VoteApp.Tests", "VoteApp.Tests\VoteApp.Tests.csproj", "{BC636CBF-0E14-497A-8D9A-8A327A5C0E11}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{A54BBF67-3C2C-4DD1-B8CF-41D79252F778}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A54BBF67-3C2C-4DD1-B8CF-41D79252F778}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A54BBF67-3C2C-4DD1-B8CF-41D79252F778}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BC636CBF-0E14-497A-8D9A-8A327A5C0E11}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BC636CBF-0E14-497A-8D9A-8A327A5C0E11}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BC636CBF-0E14-497A-8D9A-8A327A5C0E11}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BC636CBF-0E14-497A-8D9A-8A327A5C0E11}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
