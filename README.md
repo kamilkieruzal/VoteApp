@@ -1,0 +1,3 @@
+# VoteApp
+
+Simple voting application.
