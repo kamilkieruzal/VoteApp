@@ -28,6 +28,7 @@ namespace VoteApp
             builder.RegisterType<CandidateService>().As<ICandidateService>();
             builder.RegisterType<VoteService>().As<IVoteService>();
             builder.RegisterType<VoterService>().As<IVoterService>();
+            builder.RegisterType<MessageBoxService>().As<IMessageBoxService>();
             builder.RegisterType<VoteAppDbContext>().AsSelf().SingleInstance();
             builder.RegisterType<MainWindow>().AsSelf();
             builder.RegisterType<AddViewModel>().AsSelf();

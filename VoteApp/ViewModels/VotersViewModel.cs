@@ -6,6 +6,7 @@ using VoteApp.DatabaseContext;
 using VoteApp.Events;
 using VoteApp.Interfaces.Interfaces;
 using VoteApp.Models;
+using VoteApp.Services;
 using VoteApp.Windows;
 
 namespace VoteApp.ViewModels
@@ -14,17 +15,20 @@ namespace VoteApp.ViewModels
     {
         private readonly VoteAppDbContext dbContext;
         private readonly IAddService<Voter> addVoterService;
+        private readonly IMessageBoxService messageBoxService;
         private ICommand addVoterCommand;
         private ObservableCollection<Voter> voters;
 
         public VotersViewModel(
             VoteAppDbContext dbContext, 
             IAddService<Voter> addVoterService,
-            IEventAggregator eventAggregator)
+            IEventAggregator eventAggregator,
+            IMessageBoxService messageBoxService)
         {
             voters = new ObservableCollection<Voter>(dbContext.Voters);
             this.dbContext = dbContext;
             this.addVoterService = addVoterService;
+            this.messageBoxService = messageBoxService;
             eventAggregator.GetEvent<AddedVoterEvent>().Subscribe(RefreshVoters);
             eventAggregator.GetEvent<VotedEvent>().Subscribe(RefreshVoters);
         }
@@ -44,7 +48,7 @@ namespace VoteApp.ViewModels
         public void OpenWindow()
         {
             var window = new AddWindow();
-            var viewModel = new AddViewModel(addVoterService, "voter");
+            var viewModel = new AddViewModel(addVoterService, "voter", messageBoxService);
 
             viewModel.OnRequestClose += (sender, eventArgs) => window.Close();
             window.DataContext = viewModel;

@@ -13,11 +13,16 @@ namespace VoteApp.ViewModels
         private string surname;
         private ICommand submitCommand;
         private readonly string personType;
+        private readonly IMessageBoxService messageBoxService;
         private readonly IAddService<PersonEntity> addService;
 
-        public AddViewModel(IAddService<PersonEntity> addService, string personType)
+        public AddViewModel(
+            IAddService<PersonEntity> addService, 
+            string personType,
+            IMessageBoxService messageBoxService)
         {
             this.personType = personType;
+            this.messageBoxService = messageBoxService;
             this.addService = addService;
         }
 
@@ -52,7 +57,7 @@ namespace VoteApp.ViewModels
             if (!addService.TryAdd(Name, Surname))
             {
                 var capitalizedPersonType = char.ToUpper(personType[0]) + personType.Substring(1);
-                MessageBox.Show($"{capitalizedPersonType} has empty fields or already exists.", "Warning");
+                messageBoxService.Show($"{capitalizedPersonType} has empty fields or already exists.", "Warning");
             }
 
             OnRequestClose(this, new EventArgs());

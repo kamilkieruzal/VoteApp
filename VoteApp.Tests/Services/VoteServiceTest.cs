@@ -18,6 +18,7 @@ namespace VoteApp.Tests.Services
         Mock<ICandidateService> candidateServiceMock = new();
         Mock<IEventAggregator> eventAggregatorMock = new();
         Mock<VoteAppDbContext> dbContextMock = new();
+        Mock<IMessageBoxService> messageBoxService = new();
 
         [TestInitialize]
         public void Setup()
@@ -45,7 +46,8 @@ namespace VoteApp.Tests.Services
                 voterServiceMock.Object,
                 candidateServiceMock.Object,
                 dbContextMock.Object,
-                eventAggregatorMock.Object);
+                eventAggregatorMock.Object,
+                messageBoxService.Object);
         }
 
         [TestMethod]

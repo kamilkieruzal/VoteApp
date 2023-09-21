@@ -8,6 +8,7 @@ using VoteApp.DatabaseContext;
 using VoteApp.Events;
 using VoteApp.Interfaces.Interfaces;
 using VoteApp.Models;
+using VoteApp.Services;
 
 namespace VoteApp.ViewModels
 {
@@ -15,6 +16,7 @@ namespace VoteApp.ViewModels
     {
         private readonly VoteAppDbContext voteAppDbContext;
         private readonly IVoteService voteService;
+        private readonly IMessageBoxService messageBoxService;
         private ICommand voteCommand;
         private ObservableCollection<Voter> voters;
         private ObservableCollection<Candidate> candidates;
@@ -24,10 +26,12 @@ namespace VoteApp.ViewModels
         public VotePanelViewModel(
             VoteAppDbContext voteAppDbContext,
             IEventAggregator eventAggregator,
-            IVoteService voteService)
+            IVoteService voteService,
+            IMessageBoxService messageBoxService)
         {
             this.voteAppDbContext = voteAppDbContext;
             this.voteService = voteService;
+            this.messageBoxService = messageBoxService;
             Voters = new ObservableCollection<Voter>(voteAppDbContext.Voters.Where(x => !x.HasVoted));
             Candidates = new ObservableCollection<Candidate>(voteAppDbContext.Candidates);
             eventAggregator.GetEvent<AddedCandidateEvent>().Subscribe(RefreshCandidates);
@@ -97,7 +101,7 @@ namespace VoteApp.ViewModels
         {
             if (SelectedVoter == null || SelectedCandidate == null)
             {
-                MessageBox.Show("Please select valid voter and candidate.", "Warning");
+                messageBoxService.Show("Please select valid voter and candidate.", "Warning");
                 return;
             }
 

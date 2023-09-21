@@ -14,11 +14,16 @@ namespace VoteApp.Services
     {
         private readonly VoteAppDbContext dbContext;
         private readonly IEventAggregator eventAggregator;
+        private readonly IMessageBoxService messageBoxService;
 
-        public VoterService(VoteAppDbContext voteAppDbContext, IEventAggregator eventAggregator)
+        public VoterService(
+            VoteAppDbContext voteAppDbContext, 
+            IEventAggregator eventAggregator, 
+            IMessageBoxService messageBoxService)
         {
             dbContext = voteAppDbContext;
             this.eventAggregator = eventAggregator;
+            this.messageBoxService = messageBoxService;
         }
 
         public bool TryAdd(string firstName, string surname)
@@ -44,7 +49,7 @@ namespace VoteApp.Services
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Error while trying to count {fullName} vote", "Warning");
+                messageBoxService.Show($"Error while trying to count {fullName} vote", "Warning");
                 throw new VoteException();
             }
         }

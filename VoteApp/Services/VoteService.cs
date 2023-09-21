@@ -13,17 +13,20 @@ namespace VoteApp.Services
         private readonly ICandidateService candidateService;
         private readonly VoteAppDbContext dbContext;
         private readonly IEventAggregator eventAggregator;
+        private readonly IMessageBoxService messageBoxService;
 
         public VoteService(
             IVoterService voterService, 
             ICandidateService candidateService,
             VoteAppDbContext dbContext,
-            IEventAggregator eventAggregator)
+            IEventAggregator eventAggregator,
+            IMessageBoxService messageBoxService)
         {
             this.voterService = voterService;
             this.candidateService = candidateService;
             this.dbContext = dbContext;
             this.eventAggregator = eventAggregator;
+            this.messageBoxService = messageBoxService;
         }
 
         public void Vote(string voterFullName, string candidateFullName)
@@ -35,11 +38,11 @@ namespace VoteApp.Services
                 dbContext.SaveChanges();
 
                 eventAggregator.GetEvent<VotedEvent>().Publish();
-                MessageBox.Show($"Successfully submitted \"{voterFullName}\" vote on \"{candidateFullName}\"!", "Information");
+                messageBoxService.Show($"Successfully submitted \"{voterFullName}\" vote on \"{candidateFullName}\"!", "Information");
             }
             catch (VoteException) 
             {
-                MessageBox.Show("Vote cancelled");
+                messageBoxService.Show("Vote cancelled");
             }
         }
     }

@@ -14,11 +14,16 @@ namespace VoteApp.Services
     {
         private readonly VoteAppDbContext dbContext;
         private readonly IEventAggregator eventAggregator;
+        private readonly IMessageBoxService messageBoxService;
 
-        public CandidateService(VoteAppDbContext dbContext, IEventAggregator eventAggregator)
+        public CandidateService(
+            VoteAppDbContext dbContext, 
+            IEventAggregator eventAggregator, 
+            IMessageBoxService messageBoxService)
         {
             this.dbContext = dbContext;
             this.eventAggregator = eventAggregator;
+            this.messageBoxService = messageBoxService;
         }
 
         public bool TryAdd(string firstName, string surname)
@@ -45,7 +50,7 @@ namespace VoteApp.Services
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Error while trying to add vote to {fullName}.", "Warning");
+                messageBoxService.Show($"Error while trying to add vote to {fullName}.", "Warning");
                 throw new VoteException();
             }
         }

@@ -14,17 +14,20 @@ namespace VoteApp.ViewModels
     {
         private readonly VoteAppDbContext dbContext;
         private readonly IAddService<Candidate> addCandidateService;
+        private readonly IMessageBoxService messageBoxService;
         private ICommand addCandidateCommand;
         private ObservableCollection<Candidate> candidates;
 
         public CandidatesViewModel(
             VoteAppDbContext dbContext, 
             IAddService<Candidate> addCandidateService,
-            IEventAggregator eventAggregator)
+            IEventAggregator eventAggregator,
+            IMessageBoxService messageBoxService)
         {
             Candidates = new ObservableCollection<Candidate>(dbContext.Candidates);
             this.dbContext = dbContext;
             this.addCandidateService = addCandidateService;
+            this.messageBoxService = messageBoxService;
             eventAggregator.GetEvent<AddedCandidateEvent>().Subscribe(RefreshCandidates);
             eventAggregator.GetEvent<VotedEvent>().Subscribe(RefreshCandidates);
         }
@@ -44,7 +47,7 @@ namespace VoteApp.ViewModels
         public void OpenWindow()
         {
             var window = new AddWindow();
-            var viewModel = new AddViewModel(addCandidateService, "candidate");
+            var viewModel = new AddViewModel(addCandidateService, "candidate", messageBoxService);
 
             viewModel.OnRequestClose += (sender, eventArgs) => window.Close();
             window.DataContext = viewModel;
