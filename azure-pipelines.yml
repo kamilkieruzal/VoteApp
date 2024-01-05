@@ -24,5 +24,3 @@ steps:
     restoreKeys: |
       "$(Build.Repository.Name)" | "$(Build.SourceBranchName)"
       "$(Build.Repository.Name)"
-
-- task: QodanaScan@2023
